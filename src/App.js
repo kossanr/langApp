@@ -16,14 +16,16 @@ export default class App extends Component {
   render() {
     const contextValue = {
       lang: this.state.lang,
+      setLang: this.handleSetLang,
     };
     return (
       <LanguageContext.Provider value={contextValue}>
         <main className="App">
-          <Child />
           <LangControls onSetLang={this.handleSetLang} />
+          <Child />
         </main>
       </LanguageContext.Provider>
     );
   }
 }
+//For deeply nested components to update context values, a stateful provider component needs to implement the updater callback function using state.
